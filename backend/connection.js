@@ -12,5 +12,5 @@ mongoose.connect(url)
     
 });
 
-console.log('last line');
+module.exports = mongoose;
     

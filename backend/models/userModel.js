@@ -3,11 +3,15 @@ const {model, Schema} = require('../connection');
 const mySchema = new Schema({
     title : {type : String, required : true},
     user : String,
-    postedAt : Date,
+    bookedAt : Date,
     description : String,
     image : String,
-    likes : {type : Number, default : 0},
-    shares : {type : Number, default : 0}
+    name : {type : Number, default : 0},
+    email : {type : email, default : 0},
+    password : {type : password, default : 0},
+    avitor : {type : Number, default : 0},
+    role : {type : Number, default : 0}
+
 });
 
-module.exports = model('PostCollection', mySchema);
+module.exports = model('BookedCollection', mySchema);
