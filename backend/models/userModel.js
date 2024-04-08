@@ -1,17 +1,14 @@
 const {model, Schema} = require('../connection');
 
 const mySchema = new Schema({
-    title : {type : String, required : true},
-    user : String,
-    bookedAt : Date,
-    description : String,
-    image : String,
-    name : {type : Number, default : 0},
-    email : {type : email, default : 0},
-    password : {type : password, default : 0},
-    avitor : {type : Number, default : 0},
-    role : {type : Number, default : 0}
+   
+    name : {type : String, require: true},
+    email : {type : String, require: true, unique: true},
+    password : String,
+    avatar : {type : String, default : 'placeholder.png'},
+    role : {type : String, default : 'user'},
+    createAt : {type : Date, default : Date.now}
 
 });
 
-module.exports = model('BookedCollection', mySchema);
+module.exports = model('user', mySchema);
