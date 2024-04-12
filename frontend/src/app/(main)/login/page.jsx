@@ -1,6 +1,44 @@
+'use client';
+import { useFormik } from 'formik';
 import React from 'react'
 
-const page = () => {
+const Login = () => {
+  console.log(process.env.NEXT_PUBLIC_API_URL);
+
+  const loginForm = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: values => {
+      console.log(values);
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/authenticate`,{
+        method: 'post',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        console.log(response.status);
+        if(response.status === 200){
+
+          response.json()
+          thenc(data =>{
+            console.log(data);
+          })
+        }
+        
+      }).catch((err) => {
+        console.log(err);
+        
+      });
+
+    }
+  })
+
+
+
   return (
     <main className="w-full max-w-md mx-auto p-6">
   <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -54,7 +92,7 @@ const page = () => {
           Or
         </div>
         {/* Form */}
-        <form>
+        <form onSubmit={loginForm.handleSubmit}>
           <div className="grid gap-y-4">
             {/* Form Group */}
             <div>
@@ -68,7 +106,8 @@ const page = () => {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  onChange={loginForm.handleChange}
+                  value={loginForm.values.email}
                   className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   required=""
                   aria-describedby="email-error"
@@ -111,7 +150,8 @@ const page = () => {
                 <input
                   type="password"
                   id="password"
-                  name="password"
+                  onChange={loginForm.handleChange}
+                  value={loginForm.values.password}
                   className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   required=""
                   aria-describedby="password-error"
@@ -161,7 +201,7 @@ const page = () => {
               type="submit"
               className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             >
-              Sign in
+              login 
             </button>
           </div>
         </form>
@@ -174,4 +214,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Login;
