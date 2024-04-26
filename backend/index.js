@@ -6,6 +6,10 @@ const cors = require('cors');
 const app = express();
 
 const userRouter = require('./routers/userRouter');
+// const placeRouter = require('./routers/placeRouter');
+const packageRouter = require('./routers/pakageRouter');
+const utilRouter = require('./routers/utlis');
+
 
 // middleware
 app.use(cors({
@@ -16,6 +20,9 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/user', userRouter);
+// app.use('/place', placeRouter);
+app.use('/package', packageRouter);
+app.use('/util', utilRouter);
 
 const port = 5000;
 
@@ -29,4 +36,4 @@ app.get('/add', (req, res) => {
     res.send('add response from express');
 });
 
-app.listen(port,() => {console.log('express server started')});
+app.listen(port, () => { console.log('express server started') });
