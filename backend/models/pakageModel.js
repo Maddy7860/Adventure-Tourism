@@ -6,6 +6,7 @@ const mySchema = new Schema({
     place : {type : String, require: true},
     placeCover : String,
     price : Number,
+    description: String,
     facilities : {type : Array, default : []},
     createAt : {type : Date, default : Date.now}
 
