@@ -1,18 +1,6 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.3"
-  },
-  "name": "adventure-tourism",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {
-    "tailwindcss": "^3.4.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
