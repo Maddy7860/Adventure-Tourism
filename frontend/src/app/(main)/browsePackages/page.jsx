@@ -311,21 +311,10 @@ const browse = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-  </div>
-  {/* End Hero */}
-
-  {displayPackages()}
-</>
-
-
-=======
       {/* End Hero */}
 
       {displayPackages()}
     </>
->>>>>>> 8a27f9e72aada778549b5ded4636ee30cc6c1a88
   )
 }
 
